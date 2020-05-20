@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="polyuprotecModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Archivo">
+    <Key>
+      <PropertyRef Name="id_Archivo" />
+    </Key>
+    <Property Name="id_Archivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Archivo" Type="varchar" MaxLength="50" />
+    <Property Name="Tipo_Archivo" Type="varchar" MaxLength="50" />
+    <Property Name="Carpeta_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Carpeta">
+    <Key>
+      <PropertyRef Name="id_Carpetas" />
+    </Key>
+    <Property Name="id_Carpetas" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'polyuprotec.dbo.Usuarios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Tipo_usuario" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Archivo_Carpeta">
+    <End Role="Carpeta" Type="Self.Carpeta" Multiplicity="0..1" />
+    <End Role="Archivo" Type="Self.Archivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carpeta">
+        <PropertyRef Name="id_Carpetas" />
+      </Principal>
+      <Dependent Role="Archivo">
+        <PropertyRef Name="Carpeta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="polyuprotecModelStoreContainer">
+    <EntitySet Name="Archivo" EntityType="Self.Archivo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Carpeta" EntityType="Self.Carpeta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Usuarios].[id_usuario] AS [id_usuario], 
+    [Usuarios].[Nombre] AS [Nombre], 
+    [Usuarios].[Usuario] AS [Usuario], 
+    [Usuarios].[Password] AS [Password], 
+    [Usuarios].[Tipo_usuario] AS [Tipo_usuario]
+    FROM [dbo].[Usuarios] AS [Usuarios]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Archivo_Carpeta" Association="Self.FK_Archivo_Carpeta">
+      <End Role="Carpeta" EntitySet="Carpeta" />
+      <End Role="Archivo" EntitySet="Archivo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

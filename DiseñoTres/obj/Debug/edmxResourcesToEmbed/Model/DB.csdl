@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="polyuprotecModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Archivo">
+    <Key>
+      <PropertyRef Name="id_Archivo" />
+    </Key>
+    <Property Name="id_Archivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Archivo1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo_Archivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Carpeta_id" Type="Int32" />
+    <NavigationProperty Name="Carpeta" Relationship="Self.FK_Archivo_Carpeta" FromRole="Archivo" ToRole="Carpeta" />
+  </EntityType>
+  <EntityType Name="Carpeta">
+    <Key>
+      <PropertyRef Name="id_Carpetas" />
+    </Key>
+    <Property Name="id_Carpetas" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Archivo" Relationship="Self.FK_Archivo_Carpeta" FromRole="Carpeta" ToRole="Archivo" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Archivo_Carpeta">
+    <End Role="Carpeta" Type="Self.Carpeta" Multiplicity="0..1" />
+    <End Role="Archivo" Type="Self.Archivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carpeta">
+        <PropertyRef Name="id_Carpetas" />
+      </Principal>
+      <Dependent Role="Archivo">
+        <PropertyRef Name="Carpeta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="polyuprotecEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Archivo" EntityType="Self.Archivo" />
+    <EntitySet Name="Carpeta" EntityType="Self.Carpeta" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="FK_Archivo_Carpeta" Association="Self.FK_Archivo_Carpeta">
+      <End Role="Carpeta" EntitySet="Carpeta" />
+      <End Role="Archivo" EntitySet="Archivo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

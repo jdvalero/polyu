@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="polyuprotecModelStoreContainer" CdmEntityContainer="polyuprotecEntities">
+    <EntitySetMapping Name="Archivo">
+      <EntityTypeMapping TypeName="polyuprotecModel.Archivo">
+        <MappingFragment StoreEntitySet="Archivo">
+          <ScalarProperty Name="id_Archivo" ColumnName="id_Archivo" />
+          <ScalarProperty Name="Archivo1" ColumnName="Archivo" />
+          <ScalarProperty Name="Tipo_Archivo" ColumnName="Tipo_Archivo" />
+          <ScalarProperty Name="Carpeta_id" ColumnName="Carpeta_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carpeta">
+      <EntityTypeMapping TypeName="polyuprotecModel.Carpeta">
+        <MappingFragment StoreEntitySet="Carpeta">
+          <ScalarProperty Name="id_Carpetas" ColumnName="id_Carpetas" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="polyuprotecModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Tipo_usuario" ColumnName="Tipo_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

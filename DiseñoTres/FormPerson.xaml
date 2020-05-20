@@ -1,0 +1,26 @@
+﻿<Page x:Class="DiseñoTres.FormPerson"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:DiseñoTres"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="FormPerson">
+
+    <Grid Background="#FFA0A0A0" Margin="629,100,-725,-634">
+        <materialDesign:PackIcon Kind="Folder" Height="67" Width="75" HorizontalAlignment="Center"/>
+        <TextBlock FontSize="20" Width="110" Height="30" Margin="10,100,143,311">Documento</TextBlock>
+        <TextBox Name="documento" Width="200" Height="20" Margin="10,129,59,291"></TextBox>
+        <TextBlock FontSize="20" Width="80" Height="30" Margin="10,196,179,214">Nombre</TextBlock>
+        <TextBox Name="Nombre" Width="200" Height="20" Margin="10,231,59,189"></TextBox>
+        <TextBlock FontSize="20" Width="80" Height="30" Margin="10,305,179,105">Estado</TextBlock>
+        <ComboBox Name="Estado" Width="200" Height="20" Margin="10,340,59,80">
+            <ComboBoxItem>Activo</ComboBoxItem>
+            <ComboBoxItem>Inactivo</ComboBoxItem>
+        </ComboBox>
+        <Button Width="90" Margin="169,398,10,10" Click="Button_Click">Guardar</Button>
+    </Grid>
+</Page>
+ 
